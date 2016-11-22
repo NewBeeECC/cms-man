@@ -439,8 +439,11 @@ public class UserController extends BaseController {
 		if (!user.getStatus().equals(Globals.User_ADMIN)) {
 
 			user.setDeleteFlag(Globals.Delete_Forbidden);
+			//解除和组织机构的联系
+			user.setDepartid(null);
 			userService.updateEntitie(user);
 			message = "用户：" + user.getUserName() + "删除成功";
+			systemService.executeSql("delete from t_s_user_org where user_id=?", user.getId()); // 删除 用户-机构 数据
 
 			
 /**

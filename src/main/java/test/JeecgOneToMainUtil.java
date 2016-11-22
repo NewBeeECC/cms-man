@@ -6,6 +6,7 @@ import java.util.List;
 import org.jeecgframework.codegenerate.generate.onetomany.CodeGenerateOneToMany;
 import org.jeecgframework.codegenerate.pojo.onetomany.CodeParamEntity;
 import org.jeecgframework.codegenerate.pojo.onetomany.SubTableEntity;
+import org.jeecgframework.codegenerate.util.CodeResourceUtil;
 
 
 /**
@@ -59,7 +60,7 @@ public class JeecgOneToMainUtil {
 		po2.setForeignKeys(new String[]{"fck_id"});
 		subTabParamIn.add(po2);
 		codeParamEntityIn.setSubTabParam(subTabParamIn);
-		
+
 		//第三步：一对多(父子表)数据模型,代码生成
 		CodeGenerateOneToMany.oneToManyCreate(subTabParamIn, codeParamEntityIn);
 	}
